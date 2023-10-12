@@ -1,12 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Log In{% endblock title %}
 
+{% block css_files %}
+{% endblock css_files %}
+
 {% block content %}
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-</form>
+<div class="flex justify-center items-center m-0">
+    <section id="login-section" class="flex h-fit p-10 flex-col justify-center items-center gap-8 rounded-2xl bg-white shadow-2xl w-full m-4">
+        <h2 class="text-3xl text-purple-300 m-0">Log In</h2>
+        <!--- Errors -->
+        {% if form.errors %}
+            <div class="error-message">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <form method="post" id="login-form" class="flex flex-col items-start gap-4" >
+            {% csrf_token %}
+
+            <!-- Username Field -->
+            <div class="flex flex-col items-start gap-2">
+                <label class="text-purple-300 text-xl" for="{{ form.username.id_for_label }}">Username:</label>
+                <input type="username" name="username" id="id_username" class="w-64 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base">
+            </div>
+
+            <!-- Password Field -->
+            <div class="flex flex-col items-start gap-2">
+                <label class="text-purple-300 text-xl" for="{{ form.password.id_for_label }}">Password:</label>
+                <input type="password" name="password" id="id_password" class="w-64 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base">
+            </div>
+
+            <button class="px-14 py-2 rounded-md border border-solid border-purple-500 bg-gradient-to-t from-purple-300 to-purple-400 hover:from-purple-400 hover:to-purple-300 text-white text-xl cursor-pointer my-4 mx-auto ">Log In</button>
+        </form>
+    </section>
+</div>
 {% endblock content %}

@@ -1,4 +1,5 @@
 {% load static %}
+{% load static tailwind_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,21 +8,20 @@
     <title>{% block page_title %}Streak{% endblock page_title %}</title>
     <link rel="stylesheet" href="{% static 'app.css' %}">
     {% block css_files %}{% endblock css_files %}
+    {% tailwind_css %}
 </head>
 
-<body>
-    <header>
-        <nav>
-            <h1>Streak</h1>
-            <ul>
-                <li><a href="#">Home</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url "logout" %}">Logout</a></li>
-                {% else %}
-                    <li><a href="{% url "login" %}">Login</a></li>
-                    <li><a href="#">Register</a></li>
-                {% endif %}
-            </ul>
+<body class="bg-[url('images/geometry.png')]">
+    <header class="flex h-19 px-4 m-4 justify-between items-center shrink-0 rounded-xl bg-white shadow-2xl">
+        <h1 class="text-4xl font-bold bg-gradient-to-t from-cyan-300 to-purple-300 bg-clip-text text-transparent items-center justify-center font-roboto-condensed">Streak</h1>
+        <nav class="flex justify-center items-center gap-4">
+            <a href="#" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Home</a>
+            {% if user.is_authenticated %}
+                <a href="{% url "logout" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Logout</a>
+            {% else %}
+                <a href="{% url "login" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400  text-2xl font-semibold">Login</a>
+                <a href="#" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Register</a>
+            {% endif %}
         </nav>
     </header>
     {% block content %}{% endblock content %}
