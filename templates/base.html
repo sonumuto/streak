@@ -20,7 +20,7 @@
                 <a href="{% url "logout" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Logout</a>
             {% else %}
                 <a href="{% url "login" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400  text-2xl font-semibold">Login</a>
-                <a href="#" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Register</a>
+                <a href="{% url "signup" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Register</a>
             {% endif %}
         </nav>
     </header>
