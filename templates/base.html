@@ -11,24 +11,32 @@
     {% tailwind_css %}
 </head>
 
-<body class="bg-[url('images/geometry.png')]">
-    <header class="flex h-19 px-4 m-4 justify-between items-center shrink-0 rounded-xl bg-white shadow-2xl">
-        <h1 class="text-4xl font-bold bg-gradient-to-t from-cyan-300 to-purple-300 bg-clip-text text-transparent items-center justify-center font-roboto-condensed">Streak</h1>
+<body class="w-full h-screen bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 background-animate">
+    <header class="flex h-19 px-8 py-2 mx-4 my-2 justify-between items-center shrink-0 rounded-xl bg-gray-900 bg-opacity-80 shadow-2xl">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-green-400 to-purple-400 via-blue-400 bg-size-200 cursor-pointer transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent items-center justify-center font-roboto-condensed">Streak</h1>
         <nav class="flex justify-center items-center gap-4">
-            <a href="/" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Home</a>
+            <a href="/" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500">Home</a>
             {% if user.is_authenticated %}
-                <a href="{% url "logout" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Logout</a>
+                <a href="{% url "logout" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500">Logout</a>
             {% else %}
-                <a href="{% url "login" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400  text-2xl font-semibold">Login</a>
-                <a href="{% url "signup" %}" class="hover:text-purple-300 flex p-3 justify-center items-center gap-3 text-gray-400 text-2xl font-semibold">Register</a>
+                <a href="{% url "login" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100  text-2xl font-semibold transition-all duration-500">Login</a>
+                <a href="{% url "signup" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500">Register</a>
             {% endif %}
         </nav>
     </header>
     <div class="flex justify-center items-center m-0">
-        <section class="flex h-fit p-10 flex-col justify-center items-center gap-8 rounded-2xl bg-white shadow-2xl w-full m-4">
+        <section class="flex h-fit p-0 rounded-2xl bg-gray-900 shadow-2xl w-full mx-4 my-2 overflow-hidden bg-opacity-80">
             {% block content %}
             {% endblock content %}
         </section>
     </div>
+    <footer class="flex justify-center items-center m-0">
+        <section class="flex h-fit px-8 py-4 rounded-2xl bg-gray-900 shadow-2xl w-full mx-4 my-2 overflow-hidden bg-opacity-80">
+            {% block footer %}
+                <h1>hey there</h1>
+            {% endblock footer %}
+        </section>
+
+    </footer>
 </body>
 </html>

@@ -43,6 +43,10 @@ module.exports = {
     ],
     theme: {
         extend: {
+            //for gradient hover effect
+            backgroundSize: {
+                "size-200": "200% 200%",
+            },
         },
     },
     plugins: [
