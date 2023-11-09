@@ -4,6 +4,9 @@
 
 {% block content %}
     <div class="flex flex-col w-full h-fit justify-center items-center m-0 p-0">
+        <h1 class="text-4xl font-bold mt-4">Welcome to Streak!</h1>
+        <p class="text-xl mt-4">Streak is a simple habit tracker that helps you build good habits and break bad ones.</p>
+        
         {% if user.is_authenticated %}
             <p class="">Hi {{ user.username }}!</p>
         {% else %}

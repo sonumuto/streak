@@ -6,7 +6,6 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
   color: rgb(240 240 240);;
 }
 
@@ -25,11 +24,11 @@ font-roboto-condensed {
 }
 
 .background-animate {
-  background-size: 400%;
+  background-size: 500%;
 
-  -webkit-animation: AnimationName 60s ease infinite;
-  -moz-animation: AnimationName 60s ease infinite;
-  animation: AnimationName 60s ease infinite;
+  -webkit-animation: AnimationName 60s ease-in-out infinite;
+  -moz-animation: AnimationName 60s ease-in-out infinite;
+  animation: AnimationName 60s ease-in-out infinite;
 }
 
 @keyframes AnimationName {

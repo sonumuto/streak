@@ -1,0 +1,22 @@
+<!-- FILEPATH: /Users/umut/Desktop/Projects/django/streak/my_streaks/templates/my_streaks.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex h-fit w-full flex-col justify-center items-center gap-8 m-8">
+    <p class="text-3xl">My Streaks</p>
+    <ul class="grid gap-4 grid-cols-3 w-full">
+        {% for streak in streaks %}
+            <li>{% include 'my_streaks/includes/streak.html' %}</li>
+        {% empty %}
+            <li>No streaks yet.</li>
+        {% endfor %}
+    </ul>
+    <form action="{% url "create_streak" %}" method="POST">
+        {% csrf_token %}
+        <button class="px-16 w-full py-2 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom">Create new Streak!</button>
+    </form>
+</div>
+
+
+{% endblock %}

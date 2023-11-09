@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex h-fit w-full flex-col justify-center items-center gap-8 m-8">
+    <h2 class="text-3xl m-0">Create New Streak</h2>
+
+    <!--- Errors -->
+    {% if form.non_field_errors %}
+        <section class="flex shadow-md mx-auto mb-1 w-72 px-1 py-2 rounded-md border-1 border-gray-300">
+            <ul class="list-none">
+                {% for error in form.non_field_errors %}
+                    <li class="flex items-start text-red-400 text-m max-w-m break-normal">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    <form method="POST" id="create-streak-form" class="flex flex-col items-start gap-4" >
+        {% csrf_token %}
+
+        <!-- Name Field -->
+        <div class="flex flex-col items-start gap-2">
+            <label class="text-xl" for="{{ form.name.id_for_label }}">Streak Name:</label>
+            {% if form.name.errors %}
+                <input name="name" id="name" placeholder="{{ form.name.errors.0 }}" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black">
+            {% else %}
+                <input name="name" id="name" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black">
+            {% endif %}
+        </div>
+
+        <!-- Description Field -->
+        <div class="flex flex-col items-start gap-2">
+            <label class="text-xl" for="{{ form.description.id_for_label }}">Description:</label>
+            {% if form.description.errors %}
+                <textarea name="description" id="description" placeholder="{{ form.description.errors.0 }}" class="w-72 h-20 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black"></textarea>
+            {% else %}
+                <textarea name="description" id="description" class="w-72 h-20 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black"></textarea>
+            {% endif %}
+        </div>
+
+        <button class="px-14 py-3 rounded-full border border-solid border-purple-950  bg-gradient-to-r from-green-400 to-purple-500 via-blue-500 bg-size-200 text-xl cursor-pointer mt-4 mx-auto transform transition-all duration-500 hover:scale-110 hover:bg-right-bottom">Create</button>
+    </form>
+</div>
+{% endblock content %}
