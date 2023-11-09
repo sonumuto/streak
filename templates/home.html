@@ -3,15 +3,25 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-    <div class="flex flex-col w-full h-fit justify-center items-center m-0 p-0">
-        <h1 class="text-4xl font-bold mt-4">Welcome to Streak!</h1>
-        <p class="text-xl mt-4">Streak is a simple habit tracker that helps you build good habits and break bad ones.</p>
-        
+    <div class="flex flex-col w-full h-fit m-0 p-0 gap-8">
+        <h1 class="text-xl font-bold mt-4 text-center">Welcome to <strong class="bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent">Streak!</strong></h1>
+        <div class="text-m flex-2 mx-8">
+            <p>Streak is a simple habit tracker that helps you build good habits and break bad ones.</p>
+            <ul class="list-disc ml-4 mt-4">
+                <li>You can track your habit progress and check in daily.</li>
+                <li>Add multiple streaks to your list and track your progress.</li>
+                <li>If you fail, do not worry. Restart the streak.</li>
+                <li>Or you can just simply delete it if you want to ignore it. T_T</li>
+            </ul>
+        </div>
+
+        <div class="mb-4">
         {% if user.is_authenticated %}
-            <p class="">Hi {{ user.username }}!</p>
+            <p class="text-center">You are logged in as <strong class="bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent">{{ user.username }}</strong></p>
         {% else %}
-            <p>You are not logged in</p>
-            <a href="{% url "login" %}">Log In</a>
+            <p class="text-center">You are not logged in yet. <a href="{% url "login" %}" class="justify-center bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent font-bold">Go to Log In!</a></p>
+            
         {% endif %}
+        </div>
     </div>
 {% endblock content %}

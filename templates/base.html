@@ -11,30 +11,32 @@
     {% tailwind_css %}
 </head>
 
-<body class="w-full h-screen bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 background-animate">
-    <header class="flex h-19 px-8 py-2 mx-4 my-2 justify-between items-center shrink-0 rounded-xl bg-gray-900 bg-opacity-80 shadow-2xl">
-        <a href="/"><h1 class="text-4xl font-bold bg-gradient-to-r from-green-400 to-purple-400 via-blue-400 bg-size-200 cursor-pointer transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent items-center justify-center font-roboto-condensed">Streak</h1></a>
+<body class="w-full h-screen flex flex-col gap-2 mt-2 bg-primary-one">
+    <header class="flex h-19 px-8 py-2 mx-4 justify-between items-center shrink-0 rounded-l bg-gray-900 bg-opacity-80 shadow-2xl">
+        <a href="/"><h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 cursor-pointer transform transition-all duration-500 hover:bg-right-bottom bg-clip-text text-transparent items-center justify-center font-roboto-condensed">Streak</h1></a>
         <nav class="flex justify-center items-center gap-4">
-            <a href="/" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500 cursor-pointer">Home</a>
+            <a href="/" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-xl transition-all duration-500 cursor-pointer font-roboto-condensed">Home</a>
             {% if user.is_authenticated %}
-                <a href="{% url "streak_list" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500 cursor-pointer">My Streaks</a>
-                <a href="{% url "logout" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500 cursor-pointer">Logout</a>
+                <a href="{% url "streak_list" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-xl transition-all duration-500 cursor-pointer font-roboto-condensed">My Streaks</a>
+                <a href="{% url "logout" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-xl transition-all duration-500 cursor-pointer font-roboto-condensed">Logout</a>
             {% else %}
-                <a href="{% url "login" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100  text-2xl font-semibold transition-all duration-500 cursor-pointer">Login</a>
-                <a href="{% url "signup" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-2xl font-semibold transition-all duration-500 cursor-pointer">Register</a>
+                <a href="{% url "login" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100  text-xl transition-all duration-500 cursor-pointer font-roboto-condensed">Login</a>
+                <a href="{% url "signup" %}" class="hover:text-gray-400 flex p-3 justify-center items-center gap-3 text-gray-100 text-xl transition-all duration-500 cursor-pointer font-roboto-condensed">Register</a>
             {% endif %}
         </nav>
     </header>
     <div class="flex justify-center items-center m-0">
-        <section class="flex h-fit p-0 rounded-2xl bg-gray-900 shadow-2xl w-full mx-4 my-2 overflow-hidden bg-opacity-80">
+        <section class="flex h-fit p-0 rounded-l bg-gray-900 shadow-2xl w-full mx-4 overflow-hidden bg-opacity-80">
             {% block content %}
             {% endblock content %}
         </section>
     </div>
     <footer class="flex justify-center items-center m-0">
-        <section class="flex h-fit px-8 py-4 rounded-2xl bg-gray-900 shadow-2xl w-full mx-4 my-2 overflow-hidden bg-opacity-80">
+        <section class="flex h-fit px-8 py-4 rounded-l bg-gray-900 shadow-2xl w-full mx-4 overflow-hidden bg-opacity-80">
             {% block footer %}
-                <h1>Lorem ipsum dolor sit amet</h1>
+            <div class="items-center justify-center">
+                <h1>Streak is created by Umut</h1>
+            </div>
             {% endblock footer %}
         </section>
 

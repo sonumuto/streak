@@ -13,22 +13,22 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-font-roboto-condensed {
+.font-roboto-condensed {
   font-family: 'Roboto Condensed', sans-serif;
+}
+
+.text-blue-primary {
+  color: #022F40;
+}
+
+.bg-primary-one {
+  background-color: #022F40;
 }
 
 @layer base {
   html {
     @apply 'Roboto Condensed', sans-serif;
   }
-}
-
-.background-animate {
-  background-size: 500%;
-
-  -webkit-animation: AnimationName 60s ease-in-out infinite;
-  -moz-animation: AnimationName 60s ease-in-out infinite;
-  animation: AnimationName 60s ease-in-out infinite;
 }
 
 @keyframes AnimationName {

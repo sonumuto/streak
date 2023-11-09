@@ -9,19 +9,19 @@
                 <form method="POST" action="{% url "update_streak" %}">
                     {% csrf_token %}
                     <input type="hidden" name="streak_id" value="{{ streak.id }}">
-                    <button class="px-2 w-full py-2 rounded-md bg-gray-500 opacity-80 bg-size-200 text-xl mx-auto text-white" disabled>Check In</button>
+                    <button class="px-2 w-full py-1 rounded-md bg-gray-500 opacity-80 bg-size-200 text-xl mx-auto text-white font-roboto-condensed" disabled>Check In</button>
                 </form>
             {% else %}
                 <form method="POST" action="{% url "update_streak" %}">
                     {% csrf_token %}
                     <input type="hidden" name="streak_id" value="{{ streak.id }}">
-                    <button class="px-2 w-full py-2 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom">Check In</button>
+                    <button class="px-2 w-full py-1 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom font-roboto-condensed">Check In</button>
                 </form>
             {% endif %}
             <form method="POST" action="{% url "cancel_streak" %}">
                 {% csrf_token %}
                 <input type="hidden" name="streak_id" value="{{ streak.id }}">
-                <button class="px-2 w-full py-2 rounded-md bg-red-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom">Cancel</button>
+                <button class="px-2 w-full py-1 rounded-md bg-red-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom font-roboto-condensed">Cancel</button>
             </form>
         </div>
         <h2 class="text-s text-center">{{ streak.description }}</h2>
@@ -34,12 +34,12 @@
             <form method="POST" action="{% url "restart_streak" %}">
                 {% csrf_token %}
                 <input type="hidden" name="streak_id" value="{{ streak.id }}">
-                <button class="px-2 w-full py-2 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom">Restart</button>
+                <button class="px-2 w-full py-1 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom font-roboto-condensed">Restart</button>
             </form>
             <form method="POST" action="{% url "delete_streak" %}">
                 {% csrf_token %}
                 <input type="hidden" name="streak_id" value="{{ streak.id }}">
-                <button class="px-2 w-full py-2 rounded-md bg-red-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom">Delete</button>
+                <button class="px-2 w-full py-1 rounded-md bg-red-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom font-roboto-condensed">Delete</button>
             </form>
         </div>
         <h2 class="text-s text-center text-gray-400">{{ streak.description }}</h2>
