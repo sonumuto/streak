@@ -10,12 +10,14 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 class StreakListView(ListView):
+    """View to display all streaks."""
     model = Streak
     template_name = 'streak_list.html'
     context_object_name = 'streaks'
 
 
 class CreateStreakView(CreateView):
+    """View to create a new streak."""
     model = Streak
     template_name = 'my_streaks/create_streak.html'
     fields = ['name', 'description']
@@ -27,6 +29,7 @@ class CreateStreakView(CreateView):
 
 
 class CheckInStreakView(View):
+    """View to check in a streak."""
     def post(self, request):
         review_id = request.POST["streak_id"]
         Streak.objects.get(id=review_id).update_streak()
@@ -37,6 +40,7 @@ class CheckInStreakView(View):
 
 
 class CancelStreakView(View):
+    """View to cancel a streak."""
     def post(self, request):
         review_id = request.POST["streak_id"]
 
@@ -48,6 +52,7 @@ class CancelStreakView(View):
 
 
 class DeleteStreakView(View):
+    """View to delete a streak."""
     def post(self, request):
         review_id = request.POST["streak_id"]
 
@@ -59,6 +64,7 @@ class DeleteStreakView(View):
 
 
 class RestartStreakView(View):
+    """View to restart a streak."""
     def post(self, request):
         review_id = request.POST["streak_id"]
 
