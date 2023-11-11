@@ -18,7 +18,7 @@ class TestUrls(SimpleTestCase):
 
     def test_check_in_streak_url_resolves(self):
         """Check In Streak URL resolves to the Check In Streak View."""
-        url = reverse('update_streak')
+        url = reverse('check_in_streak')
         self.assertEqual(resolve(url).func.view_class, views.CheckInStreakView)
 
     def test_cancel_streak_url_resolves(self):
