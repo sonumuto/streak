@@ -32,7 +32,7 @@ class CheckInStreakView(View):
     """View to check in a streak."""
     def post(self, request):
         review_id = request.POST["streak_id"]
-        Streak.objects.get(id=review_id).update_streak()
+        Streak.objects.get(id=review_id).check_in_streak()
         # redirect to streak list
         success_url = reverse_lazy('streak_list')
 

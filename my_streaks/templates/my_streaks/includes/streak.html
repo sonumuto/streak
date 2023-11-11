@@ -6,13 +6,13 @@
         </div>
         <div class="grid gap-4 grid-cols-2 w-full my-4">
             {% if streak.is_updated %}
-                <form method="POST" action="{% url "update_streak" %}">
+                <form method="POST" action="{% url "check_in_streak" %}">
                     {% csrf_token %}
                     <input type="hidden" name="streak_id" value="{{ streak.id }}">
                     <button class="px-2 w-full py-1 rounded-md bg-gray-500 opacity-80 bg-size-200 text-xl mx-auto text-white font-roboto-condensed" disabled>Check In</button>
                 </form>
             {% else %}
-                <form method="POST" action="{% url "update_streak" %}">
+                <form method="POST" action="{% url "check_in_streak" %}">
                     {% csrf_token %}
                     <input type="hidden" name="streak_id" value="{{ streak.id }}">
                     <button class="px-2 w-full py-1 rounded-md bg-green-500 bg-size-200 text-xl cursor-pointer mx-auto transform transition-all duration-500 hover:scale-105 hover:bg-right-bottom font-roboto-condensed">Check In</button>

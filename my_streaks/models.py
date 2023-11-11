@@ -43,7 +43,7 @@ class Streak(models.Model):
         return False
 
 
-    def update_streak(self) -> None:
+    def check_in_streak(self) -> None:
         """Update the streak."""
         if self.is_streak_active:
             self.latest_streak_date = date.today()
