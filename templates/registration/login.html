@@ -1,50 +1,79 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block title %}Log In{% endblock
+title %} {% block css_files %} {% endblock css_files %} {% block content %}
+<div class="flex h-fit w-full flex-col justify-center items-center gap-8 m-8">
+    <h2 class="text-3xl m-0">Log In</h2>
 
-{% block title %}Log In{% endblock title %}
+    <!--- Errors -->
+    {% if form.non_field_errors %}
+    <section
+        class="flex shadow-md mx-auto mb-1 w-72 px-1 py-2 rounded-md border-1 border-gray-300"
+    >
+        <ul class="list-none">
+            {% for error in form.non_field_errors %}
+            <li
+                class="flex items-start text-red-300 text-m max-w-m break-normal"
+            >
+                {{ error }}
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
 
-{% block css_files %}
-{% endblock css_files %}
+    <form method="POST" id="login-form" class="flex flex-col items-start gap-4">
+        {% csrf_token %}
 
-{% block content %}
-    <div class="flex h-fit w-full flex-col justify-center items-center gap-8 m-8">
-        <h2 class="text-3xl m-0">Log In</h2>
+        <!-- Username Field -->
+        <div class="flex flex-col items-start gap-2">
+            <label class="text-xl" for="{{ form.username.id_for_label }}"
+                >Username:</label
+            >
+            {% if form.username.errors %}
+            <input
+                type="username"
+                name="username"
+                id="id_username"
+                placeholder="{{ form.username.errors.0 }}"
+                class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black"
+            />
+            {% else %}
+            <input
+                type="username"
+                name="username"
+                id="id_username"
+                class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black"
+            />
+            {% endif %}
+        </div>
 
-        <!--- Errors -->
-        {% if form.non_field_errors %}
-            <section class="flex shadow-md mx-auto mb-1 w-72 px-1 py-2 rounded-md border-1 border-gray-300">
-                <ul class="list-none">
-                    {% for error in form.non_field_errors %}
-                        <li class="flex items-start text-red-400 text-m max-w-m break-normal">{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </section>
-        {% endif %}
+        <!-- Password Field -->
+        <div class="flex flex-col items-start gap-2">
+            <label class="text-xl" for="{{ form.password.id_for_label }}"
+                >Password:</label
+            >
+            {% if form.password.errors %}
+            <input
+                type="password"
+                name="password"
+                id="id_password"
+                placeholder="{{ form.password.errors.0 }}"
+                class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black"
+            />
+            {% else %}
+            <input
+                type="password"
+                name="password"
+                id="id_password"
+                class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black"
+            />
+            {% endif %}
+        </div>
 
-        <form method="POST" id="login-form" class="flex flex-col items-start gap-4" >
-            {% csrf_token %}
-
-            <!-- Username Field -->
-            <div class="flex flex-col items-start gap-2">
-                <label class="text-xl" for="{{ form.username.id_for_label }}">Username:</label>
-                {% if form.username.errors %}
-                    <input type="username" name="username" id="id_username" placeholder="{{ form.username.errors.0 }}" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black">
-                {% else %}
-                    <input type="username" name="username" id="id_username" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black">
-                {% endif %}
-            </div>
-
-            <!-- Password Field -->
-            <div class="flex flex-col items-start gap-2">
-                <label class="text-xl" for="{{ form.password.id_for_label }}">Password:</label>
-                {% if form.password.errors %}
-                    <input type="password" name="password" id="id_password" placeholder="{{ form.password.errors.0 }}" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-red-300 bg-red-100 text-base p-1 placeholder:text-red-300 text-black">
-                {% else %}
-                    <input type="password" name="password" id="id_password" class="w-72 h-10 flex-shrink-0 flex justify-center items-center rounded-md border border-purple-200 bg-white text-base p-1 text-black">
-                {% endif %}
-            </div>
-
-            <button class="px-14 py-3 rounded-xl border border-solid border-purple-950  bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 text-xl cursor-pointer mt-4 mx-auto transform transition-all duration-500 hover:scale-110 hover:bg-right-bottom">Log In</button>
-        </form>
-    </div>
+        <button
+            class="px-14 py-3 rounded-xl border border-solid border-purple-950 bg-gradient-to-r from-blue-400 to-blue-700 via-blue-600 bg-size-200 text-xl cursor-pointer mt-4 mx-auto transform transition-all duration-500 hover:scale-110 hover:bg-right-bottom"
+        >
+            Log In
+        </button>
+    </form>
+</div>
 {% endblock content %}
